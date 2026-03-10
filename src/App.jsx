@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import "./index.css";
+import { useEffect, useState } from "react";
+import Results from "./pages/Results";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [query, setQuery] = useState("");
+  const [data, setData] = useState({});
+  const [page, setPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
+
+  useEffect(() => {
+    async function fetchBooks() {
+      try {
+        if (!query) return;
+        const res = await fetch(
+          `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&page=${page}&limit=10`,
+        );
+        const data = await res.json();
+        setData(data);
+        setMaxPage(Math.ceil(data.numFound / 10));
+        console.log(data);
+      } catch (error) {
+        error.message(error);
+      }
+    }
+    fetchBooks();
+  }, [query, page]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage query={query} setQuery={setQuery} setPage={setPage} />
+          }
+        ></Route>
+        <Route
+          path="results"
+          element={
+            <Results
+              data={data}
+              page={page}
+              setPage={setPage}
+              maxPage={maxPage}
+            />
+          }
+        ></Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

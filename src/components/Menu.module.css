@@ -1,0 +1,21 @@
+.menu {
+  position: relative;
+}
+
+.menu ul {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  list-style: none;
+  width: max-content;
+  cursor: pointer;
+  border: black solid 1px;
+  text-align: justify;
+  padding: 1rem;
+}
+
+.button {
+  padding: 1rem;
+  font-size: large;
+  border-radius: 1rem;
+}
