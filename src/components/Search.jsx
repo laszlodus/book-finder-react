@@ -11,6 +11,7 @@ function Search({ query, setQuery, setPage }) {
     setQuery(inputValue);
     setPage(1);
     navigate("/results");
+    setInputValue("");
   };
 
   return (

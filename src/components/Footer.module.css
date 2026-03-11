@@ -1,9 +1,6 @@
 .copyright {
-  width: 120rem;
-  max-width: 90%;
-  margin: 2rem auto;
-  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   text-align: center;
+  background-color: rgba(169, 169, 169, 0.414);
 }

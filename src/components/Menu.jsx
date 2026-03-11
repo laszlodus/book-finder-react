@@ -15,7 +15,7 @@ function Menu() {
       </button>
       {isOpen && (
         <ul>
-          <Link>
+          <Link to="/savedBooks">
             <li>Saved Books</li>
           </Link>
           <Link>

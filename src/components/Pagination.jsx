@@ -1,28 +1,21 @@
-function Pagination({ page, setPage, maxPage }) {
-  const pages = Array.from({ length: maxPage }, (_, i) => i + 1);
+import styles from "./Pagination.module.css";
 
+function Pagination({ page, setPage, maxPage }) {
   return (
-    <div>
+    <div className={styles.container}>
       <p>
         We found: <span>{maxPage}</span> pages.
       </p>
-      <button disabled={page === 1} onClick={() => setPage(page - 1)}>
-        Prev
-      </button>
-      {/* {pages.map((p) => (
-        <button
-          key={p}
-          onClick={() => setPage(p)}
-          style={{ fontWeight: p === page ? "bold" : "normal" }}
-        >
-          {p}
+      <div>
+        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+          Prev
         </button>
-      ))} */}
 
-      <span>{`${page} of ${maxPage}`}</span>
-      <button disabled={page === maxPage} onClick={() => setPage(page + 1)}>
-        Next
-      </button>
+        <span>{`${page} of ${maxPage}`}</span>
+        <button disabled={page === maxPage} onClick={() => setPage(page + 1)}>
+          Next
+        </button>
+      </div>
     </div>
   );
 }

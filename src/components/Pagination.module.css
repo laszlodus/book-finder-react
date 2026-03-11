@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+}
+
+button {
+  padding: 1rem;
+  margin: 0.5rem;
+  font-weight: 600;
+}
