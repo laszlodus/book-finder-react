@@ -1,8 +1,8 @@
 import Layout from "../components/Layout";
-import styles from "./savedBooks.module.css";
+import styles from "./SavedBooks.module.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
-function savedBooks({ bookmarks, deleteFromBookmarks }) {
+function SavedBooks({ bookmarks, deleteFromBookmarks }) {
   return (
     <Layout>
       <ul>
@@ -32,4 +32,4 @@ function savedBooks({ bookmarks, deleteFromBookmarks }) {
   );
 }
 
-export default savedBooks;
+export default SavedBooks;

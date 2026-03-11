@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import "./index.css";
 import { useEffect, useState } from "react";
 import Results from "./pages/Results";
-import SavedBooks from "./pages/savedBooks";
+import SavedBooks from "./pages/SavedBooks";
 
 function App() {
   const [query, setQuery] = useState("");
