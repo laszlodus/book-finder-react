@@ -1,7 +1,9 @@
 import styles from "./Books.module.css";
 import { FaRegBookmark } from "react-icons/fa";
+import Spinner from "./Spinner.jsx";
 
-function Books({ data, addToBookmarks }) {
+function Books({ data, addToBookmarks, loading }) {
+  if (loading) return <Spinner />;
   if (!data?.docs) return null;
 
   return (

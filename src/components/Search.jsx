@@ -2,8 +2,8 @@ import { useState } from "react";
 import styles from "./Search.module.css";
 import { useNavigate } from "react-router-dom";
 
-function Search({ query, setQuery, setPage }) {
-  const [inputValue, setInputValue] = useState(query);
+function Search({ setQuery, setPage }) {
+  const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {

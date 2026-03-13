@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import "./index.css";
 import { useEffect, useState } from "react";
 import Results from "./pages/Results";
-import SavedBooks from "./pages/SavedBooks";
+import SavedBooks from "./pages/savedBooks";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -15,6 +15,8 @@ function App() {
     const stored = localStorage.getItem("bookmarks");
     return stored ? JSON.parse(stored) : [];
   });
+
+  const [loading, setLoading] = useState(false);
 
   function addToBookmarks(book) {
     setBookmarks((prev) => {
@@ -35,6 +37,7 @@ function App() {
   useEffect(() => {
     async function fetchBooks() {
       try {
+        setLoading(true);
         if (!query) return;
         const res = await fetch(
           `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&page=${page}&limit=8`,
@@ -45,6 +48,8 @@ function App() {
         console.log(data);
       } catch (error) {
         error.message(error);
+      } finally {
+        setLoading(false);
       }
     }
     fetchBooks();
@@ -55,9 +60,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <HomePage query={query} setQuery={setQuery} setPage={setPage} />
-          }
+          element={<HomePage setQuery={setQuery} setPage={setPage} />}
         ></Route>
         <Route
           path="results"
@@ -68,6 +71,7 @@ function App() {
               setPage={setPage}
               maxPage={maxPage}
               addToBookmarks={addToBookmarks}
+              loading={loading}
             />
           }
         ></Route>
