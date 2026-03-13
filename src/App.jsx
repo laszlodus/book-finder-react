@@ -11,15 +11,25 @@ function App() {
   const [data, setData] = useState({});
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
-  const [bookmarks, setBookmarks] = useState([]);
+  const [bookmarks, setBookmarks] = useState(() => {
+    const stored = localStorage.getItem("bookmarks");
+    return stored ? JSON.parse(stored) : [];
+  });
 
   function addToBookmarks(book) {
-    setBookmarks((prev) => [...prev, book]);
-    console.log(bookmarks);
+    setBookmarks((prev) => {
+      const updated = [...prev, book];
+      localStorage.setItem("bookmarks", JSON.stringify(updated));
+      return updated;
+    });
   }
 
   function deleteFromBookmarks(book) {
-    setBookmarks((prev) => prev.filter((b) => b.key !== book.key));
+    setBookmarks((prev) => {
+      const deleted = prev.filter((b) => b.key !== book.key);
+      localStorage.setItem("bookmarks", JSON.stringify(deleted));
+      return deleted;
+    });
   }
 
   useEffect(() => {

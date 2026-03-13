@@ -5,7 +5,7 @@ function Books({ data, addToBookmarks }) {
   if (!data?.docs) return null;
 
   return (
-    <ul>
+    <ul className={styles.bookList}>
       {data.docs.map((book) => (
         <li key={book.key} className={styles.bookCard}>
           <div className={styles.buttonContainer}>

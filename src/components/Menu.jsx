@@ -15,12 +15,18 @@ function Menu() {
       </button>
       {isOpen && (
         <ul>
-          <Link to="/savedBooks">
-            <li>Saved Books</li>
-          </Link>
-          <Link>
-            <li>About Book Finder</li>
-          </Link>
+          <li>
+            <Link to="/">Hompage</Link>
+          </li>
+          <li>
+            <Link to="/results">Search Results</Link>
+          </li>
+          <li>
+            <Link to="/savedBooks">Saved Books</Link>
+          </li>
+          <li>
+            <Link to="/about">About Book Finder</Link>
+          </li>
         </ul>
       )}
     </div>

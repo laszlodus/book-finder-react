@@ -5,7 +5,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 function SavedBooks({ bookmarks, deleteFromBookmarks }) {
   return (
     <Layout>
-      <ul>
+      <ul className={styles.savedBook}>
         {bookmarks.map((book) => (
           <li key={book.key} className={styles.bookCard}>
             <div className={styles.buttonContainer}>

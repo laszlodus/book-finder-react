@@ -1,6 +1,6 @@
-ul {
+.bookList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   justify-content: center;
   gap: 1rem;
   padding: 0;
@@ -33,4 +33,21 @@ button {
 .buttonContainer {
   display: flex;
   flex-direction: row-reverse;
+}
+@media (min-width: 600px) {
+  .bookList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .bookList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bookList {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
