@@ -2,14 +2,14 @@ import { useState } from "react";
 import styles from "./Search.module.css";
 import { useNavigate } from "react-router-dom";
 
-function Search({ setQuery, setPage }) {
+function Search({ dispatch }) {
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setQuery(inputValue);
-    setPage(1);
+    dispatch({ type: "SET_QUERY", payload: inputValue });
+    dispatch({ type: "SET_PAGE", payload: 1 });
     navigate("/results");
     setInputValue("");
   };
