@@ -2,8 +2,15 @@ import styles from "./Books.module.css";
 import { FaRegBookmark } from "react-icons/fa";
 import { IoBookmarkSharp } from "react-icons/io5";
 import Spinner from "./Spinner.jsx";
+import { useBook } from "../contexts/BookContext.jsx";
 
-function Books({ data, addToBookmarks, loading, bookmarks }) {
+function Books() {
+  const {
+    state: { data, loading },
+    addToBookmarks,
+    bookmarks,
+  } = useBook();
+
   if (loading) return <Spinner />;
   if (!data?.docs) return null;
 

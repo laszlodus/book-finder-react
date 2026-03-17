@@ -1,8 +1,11 @@
 import Layout from "../components/Layout";
+import { useBook } from "../contexts/BookContext";
 import styles from "./SavedBooks.module.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
-function SavedBooks({ bookmarks, deleteFromBookmarks }) {
+function SavedBooks() {
+  const { bookmarks, deleteFromBookmarks } = useBook();
+
   return (
     <Layout>
       <ul className={styles.savedBook}>

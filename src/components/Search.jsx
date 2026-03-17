@@ -1,10 +1,12 @@
 import { useState } from "react";
 import styles from "./Search.module.css";
 import { useNavigate } from "react-router-dom";
+import { useBook } from "../contexts/BookContext";
 
-function Search({ dispatch }) {
+function Search() {
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
+  const { dispatch } = useBook();
 
   const handleSubmit = (e) => {
     e.preventDefault();
