@@ -25,7 +25,9 @@ function Search() {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       ></input>
-      <button type="submit">Search</button>
+      <button className={styles.searchButton} type="submit">
+        Search
+      </button>
     </form>
   );
 }

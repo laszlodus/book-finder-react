@@ -10,3 +10,10 @@
   justify-content: center;
   align-items: center;
 }
+
+.searchButton {
+  background-color: rgb(226, 110, 37);
+  padding: 1rem;
+
+  border-radius: 1rem;
+}

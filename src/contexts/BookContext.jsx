@@ -5,6 +5,7 @@ import {
   useReducer,
   useState,
 } from "react";
+import { fetchBooksApi } from "../services/apiBooks";
 
 const BooksContext = createContext();
 
@@ -83,28 +84,32 @@ function BooksProvider({ children }) {
   }
 
   useEffect(() => {
-    async function fetchBooks() {
+    async function loadBooks() {
       try {
         dispatch({ type: "SET_LOADING", payload: true });
-        if (!state.query) return;
-        const res = await fetch(
-          `https://openlibrary.org/search.json?q=${encodeURIComponent(state.query)}&page=${state.page}&limit=10`,
-        );
-        const data = await res.json();
+
+        const data = await fetchBooksApi(state.query, state.page);
+
+        if (!data) {
+          dispatch({ type: "SET_DATA", payload: null });
+          return;
+        }
+
         dispatch({ type: "SET_DATA", payload: data });
         dispatch({
           type: "SET_MAXPAGE",
           payload: Math.ceil(data.numFound / 10),
         });
-
-        console.log(data);
-      } catch {
-        dispatch({ type: "REJECTED", payload: "There was an error at fetch!" });
+      } catch (err) {
+        dispatch({
+          type: "REJECTED",
+          payload: err.message || "There was an error at fetch!",
+        });
       } finally {
         dispatch({ type: "SET_LOADING", payload: false });
       }
     }
-    fetchBooks();
+    loadBooks();
   }, [state.query, state.page]);
 
   return (

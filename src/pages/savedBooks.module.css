@@ -37,7 +37,17 @@ button {
 .buttonContainer {
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-between;
 }
+
+.warning {
+  color: red;
+  background: #ffe5e5;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
 @media (min-width: 600px) {
   .savedBook {
     grid-template-columns: 1fr;

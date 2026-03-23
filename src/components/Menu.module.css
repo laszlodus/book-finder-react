@@ -23,13 +23,13 @@
   display: block;
   padding: 0.5rem 1rem;
   color: whitesmoke;
-  font-weight: 500;
+  font-weight: 600;
 }
 .menu a:hover {
   color: black;
 }
 .button {
   padding: 1rem;
-  font-size: large;
   border-radius: 1rem;
+  background-color: rgb(226, 110, 37);
 }
