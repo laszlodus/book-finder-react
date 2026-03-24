@@ -12,6 +12,7 @@ function SavedBooks() {
 
   return (
     <Layout>
+      <h1 className={styles.title}>Bookmarks</h1>
       {bookmarks.length === 0 ? (
         <p className={styles.warning}>Your bookmarks list is empty!</p>
       ) : (
@@ -22,13 +23,11 @@ function SavedBooks() {
                 <button onClick={() => deleteFromBookmarks(book)}>
                   <RiDeleteBin6Fill />
                 </button>
+                <h5>{book.title}</h5>
                 <button onClick={() => openModal(book.key.split("/").pop())}>
                   <LuBookOpenText />
                 </button>
               </div>
-              <h5>
-                <strong>Title:</strong> {book.title}
-              </h5>
               <p>
                 <strong>Author:</strong> {book.author_name?.join(", ")}
               </p>

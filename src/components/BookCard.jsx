@@ -26,7 +26,6 @@ function BookCard() {
       try {
         setLoading(true);
         const details = await fetchBooksDetails(selectedBookId);
-        console.log(details);
         if (!details) throw new Error("Failed to get details from API");
         setBookDetails(details);
       } catch (err) {
@@ -48,12 +47,12 @@ function BookCard() {
         <button className={styles.closeButton} onClick={closeModal}>
           X
         </button>
-        <h5>Title</h5>
+        <h5 className={styles.title}>Title</h5>
         <p>{bookDetails.title}</p>
-        <h5>Description</h5>
+        <h5 className={styles.title}>Description</h5>
         <p>{getDescription(bookDetails.description)}</p>
         <div>
-          <h5>Carakters</h5>
+          <h5 className={styles.title}>Carakters</h5>
           <ul>
             {bookDetails?.subject_people?.map((el, i) => (
               <li key={i}>{el}</li>
@@ -61,7 +60,7 @@ function BookCard() {
           </ul>
         </div>
         <div>
-          <h5>Places</h5>
+          <h5 className={styles.title}>Places</h5>
           <ul>
             {bookDetails?.subject_places?.map((el, i) => (
               <li key={i}>{el}</li>
@@ -69,7 +68,7 @@ function BookCard() {
           </ul>
         </div>
         <div>
-          <h5>Time</h5>
+          <h5 className={styles.title}>Time</h5>
           <ul>
             {bookDetails?.subject_times?.map((el, i) => (
               <li key={i}>{el}</li>
@@ -77,17 +76,18 @@ function BookCard() {
           </ul>
         </div>
         <div>
-          <h5>Subjects</h5>
+          <h5 className={styles.title}>Subjects</h5>
           <ul>
             {bookDetails?.subjects?.map((el, i) => <li key={i}>{el}</li>) ||
               "No subjects available"}
           </ul>
         </div>
-        {coverUrl && (
+        {(coverUrl && (
           <div className={styles.picture}>
             <img src={coverUrl} alt={bookDetails.title} />
           </div>
-        )}
+        )) ||
+          "No cover picture found!"}
       </div>
     </div>
   );

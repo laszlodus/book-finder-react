@@ -12,7 +12,7 @@
 }
 
 .modalContent {
-  background-color: rgb(226, 110, 37);
+  background-color: var(--color-accent);
   font-weight: 600;
   padding: 2rem;
   border-radius: 8px;
@@ -48,6 +48,6 @@
   justify-content: center;
   align-items: center;
 }
-h5 {
-  color: rgb(51, 51, 179);
+.title {
+  color: var(--color-primary);
 }

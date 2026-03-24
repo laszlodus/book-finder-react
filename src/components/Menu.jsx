@@ -10,13 +10,13 @@ function Menu() {
   };
   return (
     <div className={styles.menu}>
-      <button className={styles.button} onClick={toggleMenu}>
+      <button className={styles.menuButton} onClick={toggleMenu}>
         {!isOpen ? "Menu" : "Close"}
       </button>
       {isOpen && (
         <ul>
           <li>
-            <Link to="/">Hompage</Link>
+            <Link to="/">Homepage</Link>
           </li>
           <li>
             <Link to="/results">Search Results</Link>

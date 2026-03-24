@@ -19,9 +19,10 @@ function Search() {
   return (
     <form onSubmit={handleSubmit} className={styles.searchDisplay}>
       <input
+        type="text"
         className={styles.searchInput}
         id="searchInput"
-        placeholder="Name of Book"
+        placeholder="Search books..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       ></input>

@@ -2,36 +2,21 @@ import styles from "./Books.module.css";
 import { FaRegBookmark } from "react-icons/fa";
 import { IoBookmarkSharp } from "react-icons/io5";
 import { LuBookOpenText } from "react-icons/lu";
-import Spinner from "./Spinner.jsx";
 import { useBook } from "../contexts/BookContext.jsx";
 import { useModal } from "../contexts/ModalContext.jsx";
 import BookCard from "./BookCard.jsx";
-import { Link } from "react-router-dom";
 
 function Books() {
   const {
-    state: { data, loading, error },
+    state: { data },
     addToBookmarks,
     bookmarks,
   } = useBook();
   const { isModalOpen, openModal } = useModal();
 
-  if (loading) return <Spinner />;
-  if (error) {
-    return <p className={styles.error}>{error}</p>;
-  }
-  if (!data?.docs)
-    return (
-      <div className={styles.error}>
-        <p>No books found!</p>
-        <Link to="/">
-          <button>Back</button>
-        </Link>
-      </div>
-    );
-
   return (
     <>
+      <h1 className={styles.title}>Search Results</h1>
       <ul className={styles.bookList}>
         {data.docs.map((book) => {
           const isBookmarked = bookmarks.some((b) => b.key === book.key);
@@ -42,13 +27,11 @@ function Books() {
                 <button onClick={() => addToBookmarks(book)}>
                   {isBookmarked ? <IoBookmarkSharp /> : <FaRegBookmark />}
                 </button>
+                <h5>{book.title}</h5>
                 <button onClick={() => openModal(book.key.split("/").pop())}>
                   <LuBookOpenText />
                 </button>
               </div>
-              <h5>
-                <strong>Title:</strong> {book.title}
-              </h5>
               <p>
                 <strong>Author:</strong> {book.author_name?.join(", ")}
               </p>

@@ -1,0 +1,26 @@
+.error {
+  color: red;
+  background: #ffe5e5;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.noBookPic {
+  background-image: url("/nobooksfound.png");
+  height: 30rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.backButton {
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+}
+.backButton:hover {
+  color: white;
+  background-color: cornflowerblue;
+}
