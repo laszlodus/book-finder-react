@@ -3,7 +3,7 @@
 A modern book search application built with React.  
 Users can search for books using the **Open Library API** and view results on a separate page.
 
-**[Live Demo](#)** _(Add your Vercel / Netlify link here after deployment)_
+**[Live Demo](#)** https://book-finder-ld.netlify.app/
 
 ---
 
