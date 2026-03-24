@@ -1,16 +1,82 @@
-# React + Vite
+# 📚 Book Finder React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern book search application built with React.  
+Users can search for books using the **Open Library API** and view results on a separate page.
 
-Currently, two official plugins are available:
+**[Live Demo](#)** _(Add your Vercel / Netlify link here after deployment)_
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📸 Preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![App Screenshot](./src/assets/screenshot.png)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 🔍 Book search using the Open Library public API (by title, author, or keyword)
+- 📖 Results page with book covers, authors, and additional details
+- ❤️ Save books to favorites (persisted with localStorage)
+- 📄 Pagination support for search results
+- ⚡ Global state management using Context API (no prop drilling)
+- 🔄 Loading states and spinner
+- 🧭 Responsive design for different screen sizes
+
+---
+
+## 🛠 Tech Stack
+
+- **React 18** + Vite
+- **React Router DOM v6** (multi-page navigation)
+- **Context API** (global state management)
+- **CSS Modules** (scoped styling)
+- **Open Library API**
+- **JavaScript (ES6+)**
+
+---
+
+## 📁 Project Structure
+
+```bash
+src/
+├── components/    # Reusable UI components (BookCard, Search, Pagination, Spinner)
+├── contexts/      # Global state (BookContext, ModalContext)
+├── pages/         # Pages (Home, Results, SavedBooks, About)
+├── services/      # API layer (apiBooks.js, apiBookDetails.js)
+├── assets/        # Images and static assets
+└── App.jsx
+
+```
+
+🚀 How to Run Locally
+
+# 1. Clone the repository
+
+git clone https://github.com/laszlodus/book-finder-react.git
+
+# 2. Navigate into the project
+
+cd book-finder-react
+
+# 3. Install dependencies
+
+npm install
+
+# 4. Start the development server
+
+npm run dev
+🎯 What I Learned
+-Managing global state using Context API and custom hooks
+-Structuring a React application with clear separation of concerns
+-Creating a reusable service layer for API requests
+-Handling asynchronous data with loading and error states
+-Building responsive and maintainable UI with CSS Modules
+-Implementing pagination and modal-based detail views
+
+📬 Contact
+
+I am currently open to Junior Front-End Developer opportunities.
+Laszlo Dus
+Frontend Developer
+GitHub | LinkedIn https://www.linkedin.com/in/laszlo-dus-6b625035b/
