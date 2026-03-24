@@ -6,6 +6,7 @@ import Spinner from "./Spinner.jsx";
 import { useBook } from "../contexts/BookContext.jsx";
 import { useModal } from "../contexts/ModalContext.jsx";
 import BookCard from "./BookCard.jsx";
+import { Link } from "react-router-dom";
 
 function Books() {
   const {
@@ -19,7 +20,15 @@ function Books() {
   if (error) {
     return <p className={styles.error}>{error}</p>;
   }
-  if (!data?.docs) return <p className={styles.error}>No books found!</p>;
+  if (!data?.docs)
+    return (
+      <div className={styles.error}>
+        <p>No books found!</p>
+        <Link to="/">
+          <button>Back</button>
+        </Link>
+      </div>
+    );
 
   return (
     <>

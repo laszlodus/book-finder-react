@@ -9,6 +9,7 @@ function HomePage() {
         <h1>You can search thousands of books</h1>
       </div>
       <Search />
+      <div className={styles.hero}></div>
     </Layout>
   );
 }

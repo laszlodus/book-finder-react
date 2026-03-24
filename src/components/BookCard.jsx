@@ -57,7 +57,7 @@ function BookCard() {
           <ul>
             {bookDetails?.subject_people?.map((el, i) => (
               <li key={i}>{el}</li>
-            )) || "N/A"}
+            )) || "No carakters available"}
           </ul>
         </div>
         <div>
@@ -65,7 +65,7 @@ function BookCard() {
           <ul>
             {bookDetails?.subject_places?.map((el, i) => (
               <li key={i}>{el}</li>
-            ))}
+            )) || "No places available"}
           </ul>
         </div>
         <div>
@@ -73,15 +73,14 @@ function BookCard() {
           <ul>
             {bookDetails?.subject_times?.map((el, i) => (
               <li key={i}>{el}</li>
-            )) || "N/A"}
+            )) || "No time available"}
           </ul>
         </div>
         <div>
           <h5>Subjects</h5>
           <ul>
-            {bookDetails?.subjects?.map((el, i) => (
-              <li key={i}>{el}</li>
-            ))}
+            {bookDetails?.subjects?.map((el, i) => <li key={i}>{el}</li>) ||
+              "No subjects available"}
           </ul>
         </div>
         {coverUrl && (

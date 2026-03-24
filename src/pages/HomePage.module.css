@@ -1,4 +1,14 @@
 .text {
   display: flex;
   justify-content: center;
+  text-align: center;
+}
+
+.hero {
+  background-image: url("/bookfinder_2026.png");
+  height: 30rem;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
