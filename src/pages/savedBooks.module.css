@@ -17,6 +17,8 @@
   flex-direction: column;
   text-align: center;
   padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
 }
 .bookCard:nth-child(odd) {
   background-color: rgba(51, 51, 179, 0.434);
