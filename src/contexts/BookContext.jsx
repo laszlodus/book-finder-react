@@ -96,6 +96,7 @@ function BooksProvider({ children }) {
         }
 
         const data = await fetchBooksApi(state.query, state.page);
+        console.log(data);
 
         if (!data) {
           dispatch({ type: "SET_DATA", payload: null });

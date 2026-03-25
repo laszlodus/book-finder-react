@@ -24,7 +24,7 @@ function Results() {
           </div>
         </>
       )}
-      {!loading && !error && !data.docs && (
+      {!loading && !error && data.docs?.length === 0 && (
         <>
           <div className={styles.error}>
             <p>No books found!</p>
