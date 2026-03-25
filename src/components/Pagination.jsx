@@ -1,4 +1,4 @@
-import { useBook } from "../contexts/BookContext";
+import { useBook } from "../hooks/useBook";
 import styles from "./Pagination.module.css";
 
 function Pagination() {

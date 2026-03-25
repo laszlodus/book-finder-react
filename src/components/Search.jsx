@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Search.module.css";
 import { useNavigate } from "react-router-dom";
-import { useBook } from "../contexts/BookContext";
+import { useBook } from "../hooks/useBook";
 
 function Search() {
   const [inputValue, setInputValue] = useState("");

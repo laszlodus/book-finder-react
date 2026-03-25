@@ -1,9 +1,9 @@
 import Layout from "../components/Layout";
-import { useBook } from "../contexts/BookContext";
+import { useBook } from "../hooks/useBook";
 import styles from "./SavedBooks.module.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { LuBookOpenText } from "react-icons/lu";
-import { useModal } from "../contexts/ModalContext";
+import { useModal } from "../hooks/useModal";
 import BookCard from "../components/BookCard";
 
 function SavedBooks() {

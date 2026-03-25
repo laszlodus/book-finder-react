@@ -2,8 +2,8 @@ import styles from "./Books.module.css";
 import { FaRegBookmark } from "react-icons/fa";
 import { IoBookmarkSharp } from "react-icons/io5";
 import { LuBookOpenText } from "react-icons/lu";
-import { useBook } from "../contexts/BookContext.jsx";
-import { useModal } from "../contexts/ModalContext.jsx";
+import { useBook } from "../hooks/useBook.js";
+import { useModal } from "../hooks/useModal.js";
 import BookCard from "./BookCard.jsx";
 
 function Books() {

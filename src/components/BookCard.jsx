@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchBooksDetails } from "../services/apiBookDeatails";
 import Spinner from "./Spinner";
 import styles from "./BookCard.module.css";
-import { useModal } from "../contexts/ModalContext";
+import { useModal } from "../hooks/useModal";
 
 function BookCard() {
   const [loading, setLoading] = useState(false);

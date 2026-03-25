@@ -1,13 +1,7 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import { fetchBooksApi } from "../services/apiBooks";
 
-const BooksContext = createContext();
+export const BooksContext = createContext();
 
 const initialState = {
   query: "",
@@ -140,9 +134,4 @@ function BooksProvider({ children }) {
   );
 }
 
-function useBook() {
-  const context = useContext(BooksContext);
-  return context;
-}
-
-export { BooksProvider, useBook };
+export { BooksProvider };

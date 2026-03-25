@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
-const ModalContext = createContext();
+export const ModalContext = createContext();
 
 function ModalProvider({ children }) {
   const [selectedBookId, setSelectedBookId] = useState(null);
@@ -24,10 +24,4 @@ function ModalProvider({ children }) {
   );
 }
 
-function useModal() {
-  const context = useContext(ModalContext);
-  if (!context) throw new Error("useModal must be used within ModalProvider");
-  return context;
-}
-
-export { ModalProvider, useModal };
+export { ModalProvider };
