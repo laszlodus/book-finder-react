@@ -11,27 +11,36 @@ function Results() {
     state: { data, loading, error },
   } = useBook();
 
-  if (loading) return <Spinner />;
-  if (error) {
-    return <p className={styles.error}>{error}</p>;
-  }
-  if (!data?.docs)
-    return (
-      <Layout>
-        <div className={styles.error}>
-          <p>No books found!</p>
-          <Link to="/">
-            <button className={styles.backButton}>Back</button>
-          </Link>
-        </div>
-        <div className={styles.noBookPic}></div>
-      </Layout>
-    );
-
   return (
     <Layout>
-      <Books />
-      <Pagination />
+      {loading && <Spinner />}
+      {error && (
+        <>
+          <div className={styles.error}>
+            <p>{error}</p>
+            <Link to="/">
+              <button className={styles.backButton}>Back</button>
+            </Link>
+          </div>
+        </>
+      )}
+      {!loading && !error && !data.docs && (
+        <>
+          <div className={styles.error}>
+            <p>No books found!</p>
+            <Link to="/">
+              <button className={styles.backButton}>Back</button>
+            </Link>
+          </div>
+          <div className={styles.noBookPic}></div>
+        </>
+      )}
+      {!loading && !error && data?.docs && (
+        <>
+          <Books />
+          <Pagination />
+        </>
+      )}
     </Layout>
   );
 }

@@ -46,6 +46,11 @@ const reducer = (state, action) => {
       };
     case "REJECTED":
       return { ...state, loading: false, error: action.payload };
+    case "CLEAR_ERROR":
+      return {
+        ...state,
+        error: "",
+      };
     default:
       throw new Error("Unkonown action type!");
   }
@@ -85,8 +90,16 @@ function BooksProvider({ children }) {
 
   useEffect(() => {
     async function loadBooks() {
+      dispatch({ type: "CLEAR_ERROR" });
       try {
         dispatch({ type: "SET_LOADING", payload: true });
+        if (state.query.trim().length < 3) {
+          dispatch({
+            type: "REJECTED",
+            payload: "Write at least 3 caracters!",
+          });
+          return;
+        }
 
         const data = await fetchBooksApi(state.query, state.page);
 
