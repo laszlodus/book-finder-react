@@ -46,7 +46,7 @@ const reducer = (state, action) => {
         error: "",
       };
     default:
-      throw new Error("Unkonown action type!");
+      throw new Error("Unknown action type!");
   }
 };
 

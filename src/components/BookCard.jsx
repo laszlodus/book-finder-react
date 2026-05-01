@@ -8,7 +8,7 @@ function BookCard() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [bookDetails, setBookDetails] = useState(null);
-  const coverId = bookDetails?.covers?.[1];
+  const coverId = bookDetails?.covers?.[1] || bookDetails?.covers?.[0];
   const coverUrl = coverId
     ? `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`
     : null;
@@ -22,19 +22,29 @@ function BookCard() {
   }
 
   useEffect(() => {
+    if (!selectedBookId) return;
+    let isMounted = true;
+
     async function loadDetails() {
       try {
         setLoading(true);
+        setError("");
+
         const details = await fetchBooksDetails(selectedBookId);
         if (!details) throw new Error("Failed to get details from API");
-        setBookDetails(details);
+
+        if (isMounted) setBookDetails(details);
       } catch (err) {
-        setError(err.message);
+        if (isMounted) setError(err.message || "Something went wrong");
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     }
     loadDetails();
+
+    return () => {
+      isMounted = false;
+    };
   }, [selectedBookId]);
 
   if (loading) return <Spinner />;
@@ -52,42 +62,52 @@ function BookCard() {
         <h5 className={styles.title}>Description</h5>
         <p>{getDescription(bookDetails.description)}</p>
         <div>
-          <h5 className={styles.title}>Carakters</h5>
+          <h5 className={styles.title}>Characters</h5>
           <ul>
-            {bookDetails?.subject_people?.map((el, i) => (
-              <li key={i}>{el}</li>
-            )) || "No carakters available"}
+            {bookDetails?.subject_people?.length > 0 ? (
+              bookDetails?.subject_people?.map((el) => <li key={el}>{el}</li>)
+            ) : (
+              <li>No characters available</li>
+            )}
           </ul>
         </div>
         <div>
           <h5 className={styles.title}>Places</h5>
           <ul>
-            {bookDetails?.subject_places?.map((el, i) => (
-              <li key={i}>{el}</li>
-            )) || "No places available"}
+            {bookDetails?.subject_places?.length > 0 ? (
+              bookDetails?.subject_places?.map((el) => <li key={el}>{el}</li>)
+            ) : (
+              <li>No places available</li>
+            )}
           </ul>
         </div>
         <div>
           <h5 className={styles.title}>Time</h5>
           <ul>
-            {bookDetails?.subject_times?.map((el, i) => (
-              <li key={i}>{el}</li>
-            )) || "No time available"}
+            {bookDetails?.subject_times?.length > 0 ? (
+              bookDetails?.subject_times?.map((el) => <li key={el}>{el}</li>)
+            ) : (
+              <li>No time available</li>
+            )}
           </ul>
         </div>
         <div>
           <h5 className={styles.title}>Subjects</h5>
           <ul>
-            {bookDetails?.subjects?.map((el, i) => <li key={i}>{el}</li>) ||
-              "No subjects available"}
+            {bookDetails?.subjects?.length > 0 ? (
+              bookDetails?.subjects?.map((el) => <li key={el}>{el}</li>)
+            ) : (
+              <li>No subjects available</li>
+            )}
           </ul>
         </div>
-        {(coverUrl && (
+        {coverUrl ? (
           <div className={styles.picture}>
             <img src={coverUrl} alt={bookDetails.title} />
           </div>
-        )) ||
-          "No cover picture found!"}
+        ) : (
+          <p>No cover picture found!</p>
+        )}
       </div>
     </div>
   );
